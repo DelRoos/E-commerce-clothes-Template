@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   final clothes = Clothes.generateClothes()[0];
+  final bottomList = ["home", "menu", "heart", "user"];
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +24,22 @@ class HomePage extends StatelessWidget {
             BestSell(),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        type: BottomNavigationBarType.fixed,
+        items: bottomList
+            .map(
+              (e) => BottomNavigationBarItem(
+                label: e,
+                icon: Image.asset(
+                  "assets/icons/$e.png",
+                  width: 25,
+                ),
+              ),
+            )
+            .toList(),
       ),
     );
   }
